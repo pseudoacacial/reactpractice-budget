@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { splitToPages } from "../utils/array";
+import { formatCurrency } from "../utils/number";
 import type { Transactions } from "../utils/transactions";
 
 export const TransactionList = ({
@@ -17,7 +18,7 @@ export const TransactionList = ({
       <h3>TRANSACTIONS THIS MONTH</h3>
       {transactionPages[page] &&
         transactionPages[page].map((transaction) => (
-          <li>{transaction.amount}</li>
+          <li>{formatCurrency(transaction.amount)}</li>
         ))}
 
       {transactionPages.map((_page, index) => (
