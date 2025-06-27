@@ -4,9 +4,10 @@ import type { Transactions } from "../utils/transactions";
 import { filterData } from "../utils/transactions";
 import { MonthSwitcher } from "./MonthSwitcher";
 import { TotalSpending } from "./TotalSpending";
+import { TransactionList } from "./TransactionList";
 
 export const BudgetDashboard = (props: { transactions: Transactions }) => {
-  const today = new Date("2025-02-01");
+  const today = new Date("2025-01-01");
   const [currentYearAndMonth, setCurrentYearAndMonth] = useState<
     [number, number]
   >([today.getFullYear(), today.getMonth()]);
@@ -32,10 +33,7 @@ export const BudgetDashboard = (props: { transactions: Transactions }) => {
       />
 
       <TotalSpending transactions={selectedTransactions} />
-
-      {selectedTransactions.map((transaction) => (
-        <li>{transaction.amount}</li>
-      ))}
+      <TransactionList transactions={selectedTransactions} />
     </div>
   );
 };
