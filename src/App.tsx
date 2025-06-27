@@ -1,10 +1,8 @@
 import data from "../transactions.json";
 import "./App.css";
 
-import {
-  BudgetDashboard,
-  type Transactions,
-} from "./components/BudgetDashboard";
+import { BudgetDashboard } from "./components/BudgetDashboard";
+import type { Transactions } from "./utils/transactions";
 
 const transactions = data as Transactions;
 

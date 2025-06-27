@@ -1,26 +1,9 @@
 import { useEffect, useState } from "react";
 
+import type { Transactions } from "../utils/transactions";
+import { filterData } from "../utils/transactions";
 import { MonthSwitcher } from "./MonthSwitcher";
-
-export type Transactions = {
-  date: `${number}-${number}-${number}`;
-  amount: number;
-  payee: string;
-  category: string;
-}[];
-
-const filterData = (
-  data: Transactions,
-  year: number,
-  month: number
-): Transactions => {
-  return data.filter((transaction) => {
-    const [rowYear, rowMonth] = transaction.date
-      .split("-")
-      .map((string) => parseInt(string));
-    return rowYear === year && rowMonth === month;
-  });
-};
+import { TotalSpending } from "./TotalSpending";
 
 export const BudgetDashboard = (props: { transactions: Transactions }) => {
   const today = new Date("2025-02-01");
@@ -47,6 +30,8 @@ export const BudgetDashboard = (props: { transactions: Transactions }) => {
         currentYearAndMonth={currentYearAndMonth}
         setCurrentYearAndMonth={setCurrentYearAndMonth}
       />
+
+      <TotalSpending transactions={selectedTransactions} />
 
       {selectedTransactions.map((transaction) => (
         <li>{transaction.amount}</li>
