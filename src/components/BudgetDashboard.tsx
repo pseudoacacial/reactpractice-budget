@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import shared from "../styles/shared.module.css";
 import type { Transactions } from "../utils/transactions";
 import { filterData } from "../utils/transactions";
+import styles from "./BudgetDashboard.module.css";
+import { CategoryChart } from "./CategoryChart";
 import { MonthSwitcher } from "./MonthSwitcher";
 import { TotalSpending } from "./TotalSpending";
 import { TransactionList } from "./TransactionList";
@@ -34,7 +36,11 @@ export const BudgetDashboard = (props: { transactions: Transactions }) => {
       />
 
       <TotalSpending transactions={selectedTransactions} />
-      <TransactionList transactions={selectedTransactions} />
+
+      <div className={styles.double}>
+        <CategoryChart transactions={selectedTransactions} />
+        <TransactionList transactions={selectedTransactions} />
+      </div>
     </div>
   );
 };

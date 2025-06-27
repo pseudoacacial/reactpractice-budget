@@ -19,39 +19,45 @@ export const TransactionList = ({
   return (
     <div className={shared.block}>
       <h3 className={shared.title}>TRANSACTIONS THIS MONTH</h3>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>PAYEE</th>
-            <th>DATE</th>
-            <th>AMOUNT</th>
-            <th>CATEGORY</th>
-          </tr>
-        </thead>
-        <tbody className={styles.list} role="list">
-          {transactionPages[page] &&
-            transactionPages[page].map((transaction) => (
+      {transactions.length > 0 && (
+        <>
+          <table className={styles.table}>
+            <thead>
               <tr>
-                <td className={styles.td}>{transaction.payee}</td>
-                <td className={styles.td}>{transaction.date}</td>
-                <td className={styles.td}>
-                  {formatCurrency(transaction.amount)}
-                </td>
-                <td className={styles.td}>{transaction.category}</td>
+                <th>PAYEE</th>
+                <th>DATE</th>
+                <th>AMOUNT</th>
+                <th>CATEGORY</th>
               </tr>
+            </thead>
+            <tbody className={styles.list} role="list">
+              {transactionPages[page] &&
+                transactionPages[page].map((transaction) => (
+                  <tr>
+                    <td className={styles.td}>{transaction.payee}</td>
+                    <td className={styles.td}>{transaction.date}</td>
+                    <td className={styles.td}>
+                      {formatCurrency(transaction.amount)}
+                    </td>
+                    <td className={styles.td}>{transaction.category}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div className={styles.pageButtons}>
+            {transactionPages.map((_page, index) => (
+              <button
+                className={`${shared.button} ${
+                  index === page && styles.active
+                }`}
+                onClick={() => setPage(index)}
+              >
+                {index + 1}
+              </button>
             ))}
-        </tbody>
-      </table>
-      <div className={styles.pageButtons}>
-        {transactionPages.map((_page, index) => (
-          <button
-            className={`${shared.button} ${index === page && styles.active}`}
-            onClick={() => setPage(index)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
