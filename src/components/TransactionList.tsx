@@ -17,7 +17,7 @@ export const TransactionList = ({
       ))}
 
       {transactionPages.map((_page, index) => (
-        <button onClick={() => setPage(index)}>{index}</button>
+        <button onClick={() => setPage(index)}>{index + 1}</button>
       ))}
     </div>
   );

@@ -6,5 +6,5 @@ export const TotalSpending = ({
   transactions: Transactions;
 }) => {
   const total = transactions.reduce((a, b): number => a + b.amount, 0);
-  return <div className="">TOTATL SPENT THIS MONTH {total}</div>;
+  return <div className="">TOTAL SPENT THIS MONTH {total}</div>;
 };
