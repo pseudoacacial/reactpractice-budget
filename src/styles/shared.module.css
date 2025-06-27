@@ -4,6 +4,7 @@
   padding: 0.5em;
   margin: 0.5em;
   flex-grow: 1;
+  flex-basis: 50%;
 }
 
 .title {

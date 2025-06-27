@@ -1,6 +1,7 @@
 import Chart from "react-google-charts";
 import shared from "../styles/shared.module.css";
 import type { Transactions } from "../utils/transactions";
+import styles from "./CategoryChart.module.css";
 
 const sumByCategory = <T extends { category: string; amount: number }>(
   data: T[]
@@ -21,7 +22,7 @@ export const CategoryChart = ({
 }) => {
   console.log(sumByCategory(transactions));
   return (
-    <div className={shared.block}>
+    <div className={`${styles.categoryChart} ${shared.block}`}>
       <h3 className={shared.title}>EXPENSES BY CATEGORY</h3>
       <Chart
         // Try different chart types by changing this property with one of: LineChart, BarChart, AreaChart...
