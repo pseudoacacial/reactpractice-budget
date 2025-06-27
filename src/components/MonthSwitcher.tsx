@@ -1,3 +1,5 @@
+import shared from "../styles/shared.module.css";
+
 export interface MonthSwitcherProps {
   currentYearAndMonth: [number, number];
   setCurrentYearAndMonth: React.Dispatch<
@@ -47,9 +49,13 @@ export const MonthSwitcher = ({
   };
   return (
     <>
-      <button onClick={decrementMonth}>{"<<"}</button>
+      <button className={shared.button} onClick={decrementMonth}>
+        {"<<"}
+      </button>
       {monthNames[currentYearAndMonth[1]]} {currentYearAndMonth[0]}
-      <button onClick={incrementMonth}>{">>"}</button>
+      <button className={shared.button} onClick={incrementMonth}>
+        {">>"}
+      </button>
     </>
   );
 };

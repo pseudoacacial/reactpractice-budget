@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import shared from "../styles/shared.module.css";
 import type { Transactions } from "../utils/transactions";
 import { filterData } from "../utils/transactions";
 import { MonthSwitcher } from "./MonthSwitcher";
@@ -26,7 +27,7 @@ export const BudgetDashboard = (props: { transactions: Transactions }) => {
 
   return (
     <div className="">
-      <h3>Budget Dashboard</h3>
+      <h3 className={shared.title}>Budget Dashboard</h3>
       <MonthSwitcher
         currentYearAndMonth={currentYearAndMonth}
         setCurrentYearAndMonth={setCurrentYearAndMonth}
